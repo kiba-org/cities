@@ -1,4 +1,11 @@
 import * as fs from "fs";
+import path from "path";
+import zlib from "zlib";
+
+const currentFilePath = new URL(import.meta.url).pathname;
+const currentDir = path.dirname(currentFilePath);
+const snGzFilePath = path.join(currentDir, "../dist/SN.txt.gz");
+const mlGzFilePath = path.join(currentDir, "../dist/ML.txt.gz");
 
 export interface City {
   name: string;
@@ -42,8 +49,11 @@ function processCityData(lines: string[], countryCode: string): City[] {
   return cities;
 }
 
-const snData: string = fs.readFileSync("dist/SN.txt", "utf8");
-const mlData: string = fs.readFileSync("dist/ML.txt", "utf8");
+const snGzData: Buffer = fs.readFileSync(snGzFilePath);
+const snData: string = zlib.gunzipSync(snGzData).toString("utf8");
+
+const mlGzData: Buffer = fs.readFileSync(mlGzFilePath);
+const mlData: string = zlib.gunzipSync(mlGzData).toString("utf8");
 
 const snLines: string[] = snData.split("\n");
 const mlLines: string[] = mlData.split("\n");

@@ -6,7 +6,7 @@ const targetDirectory = path.join(__dirname, "dist"); // Répertoire cible
 
 // Lister tous les fichiers avec l'extension .txt dans le répertoire source
 fs.readdirSync(sourceDirectory).forEach((file) => {
-  if (file.endsWith(".txt")) {
+  if (file.endsWith(".gz") || file === "regions.txt") {
     const sourceFile = path.join(sourceDirectory, file);
     const targetFile = path.join(targetDirectory, file);
     fs.copyFileSync(sourceFile, targetFile);

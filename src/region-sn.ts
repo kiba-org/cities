@@ -1,8 +1,13 @@
 import * as fs from "fs";
+import path from "path";
 
 import { City, cities } from "./cities.js";
 
-const regionSn: string = fs.readFileSync("dist/regions.txt", "utf8");
+const currentFilePath = new URL(import.meta.url).pathname;
+const currentDir = path.dirname(currentFilePath);
+const rgFilePath = path.join(currentDir, "../dist/regions.txt");
+
+const regionSn: string = fs.readFileSync(rgFilePath, "utf8");
 const regionSnLines: string[] = regionSn.split("\n");
 
 interface Region {
