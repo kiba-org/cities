@@ -32,6 +32,14 @@
   "keywords": [
     "cities"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiba-org/cities.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kiba-org/cities/issues"
+  },
+  "homepage": "https://github.com/kiba-org/cities#readme",
   "author": "Hakim Gueye <beatsjordy@gmail.com>",
   "license": "MIT",
   "devDependencies": {
