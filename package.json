@@ -1,6 +1,6 @@
 {
   "name": "@kiba-org/cities",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Data  Sénégal 🇸🇳 et Mali 🇲🇱",
   "main": "./dist/index.js",
   "type": "module",
