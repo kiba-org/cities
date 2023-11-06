@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import path from "path";
 import { createReadStream, createWriteStream } from "fs";
-import { createGzip } from "zlib";
+import { createGzip, constants } from "zlib";
 
 const currentFilePath = new URL(import.meta.url).pathname;
 const currentDir = path.dirname(currentFilePath);
@@ -28,9 +28,15 @@ const outputSN = createWriteStream(outputSNFilePath);
 const inputML = createReadStream(inputMLFilePath);
 const outputML = createWriteStream(outputMLFilePath);
 
-const gzipCities = createGzip();
-const gzipSN = createGzip();
-const gzipML = createGzip();
+const gzipCities = createGzip({
+  level: constants.Z_MAX_LEVEL,
+});
+const gzipSN = createGzip({
+  level: constants.Z_MAX_LEVEL,
+});
+const gzipML = createGzip({
+  level: constants.Z_MAX_LEVEL,
+});
 
 inputCities.pipe(gzipCities).pipe(outputCities);
 inputSN.pipe(gzipSN).pipe(outputSN);

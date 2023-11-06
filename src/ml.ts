@@ -14,7 +14,14 @@ const citiesLines: string[] = citiesData.split("\n");
 
 const allCities: City[] = processCityData(citiesLines);
 
+const citiesSet: Set<string> = new Set();
 const cities: City[] = allCities.sort((a, b) => a.name.localeCompare(b.name));
-const mlData = cities;
+const mlData = cities.filter((city) => {
+  if (!citiesSet.has(city.name)) {
+    citiesSet.add(city.name);
+    return true;
+  }
+  return false;
+});
 
 export { mlData };
