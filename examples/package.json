@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "example.mjs",
+  "scripts": {
+    "start": "node ./example.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@kiba-org/cities": "../dist"
+  },
+  "author": "",
+  "license": "ISC"
+}
