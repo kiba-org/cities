@@ -5,66 +5,48 @@ import { createGzip, constants } from "zlib";
 const currentFilePath = new URL(import.meta.url).pathname;
 const currentDir = path.dirname(currentFilePath);
 
+const data = [
+  {
+    allow: true,
+    name: "sn",
+    inputPath: "../data/SN.txt",
+    outputPath: "../dist/SN.txt.gz",
+  },
+  {
+    allow: true,
+    name: "ml",
+    inputPath: "../data/ML.txt",
+    outputPath: "../dist/ML.txt.gz",
+  },
+  {
+    allow: true,
+    name: "regions",
+    inputPath: "../data/regions.txt",
+    outputPath: "../dist/regions.txt.gz",
+  },
+  {
+    allow: false,
+    name: "cities",
+    inputPath: "../data/cities500.txt",
+    outputPath: "../dist/cities500.txt.gz",
+  },
+];
 /**
  * Compress files
  */
 
-// TODO: add for all country > 500
-//const inputCitiesFilePath = path.join(currentDir, "../data/cities500.txt");
-//const outputCitiesFilePath = path.join(currentDir, "../data/cities500.txt.gz");
+data.map((file) => {
+  if (!file.allow) return;
+  const inputFilePath = path.join(currentDir, file.inputPath);
+  const outputFilePath = path.join(currentDir, file.outputPath);
+  const input = createReadStream(inputFilePath);
+  const output = createWriteStream(outputFilePath);
+  const gzip = createGzip({
+    level: constants.Z_MAX_LEVEL,
+  });
+  input.pipe(gzip).pipe(output);
 
-const inputSNFilePath = path.join(currentDir, "../data/SN.txt");
-const outputSNFilePath = path.join(currentDir, "../data/SN.txt.gz");
-
-const inputMLFilePath = path.join(currentDir, "../data/ML.txt");
-const outputMLFilePath = path.join(currentDir, "../data/ML.txt.gz");
-// TODO: add for all country > 500
-//const inputCities = createReadStream(inputCitiesFilePath);
-//const outputCities = createWriteStream(outputCitiesFilePath);
-
-const inputSN = createReadStream(inputSNFilePath);
-const outputSN = createWriteStream(outputSNFilePath);
-
-const inputML = createReadStream(inputMLFilePath);
-const outputML = createWriteStream(outputMLFilePath);
-
-// TODO: add for all country > 500
-// const gzipCities = createGzip({
-//   level: constants.Z_MAX_LEVEL,
-// });
-const gzipSN = createGzip({
-  level: constants.Z_MAX_LEVEL,
-});
-const gzipML = createGzip({
-  level: constants.Z_MAX_LEVEL,
-});
-
-// TODO: add for all country > 500
-//inputCities.pipe(gzipCities).pipe(outputCities);
-inputSN.pipe(gzipSN).pipe(outputSN);
-inputML.pipe(gzipML).pipe(outputML);
-
-// TODO: add for all country > 500
-// outputCities.on("finish", () => {
-//   console.log("Compression du fichier Cities500 terminée.");
-// });
-// TODO: add for all country > 500
-// outputCities.on("error", (err) => {
-//   console.error("Erreur lors de la compression du fichier Cities500 :", err);
-// });
-
-outputSN.on("finish", () => {
-  console.log("Compression du fichier SN terminée.");
-});
-
-outputSN.on("error", (err) => {
-  console.error("Erreur lors de la compression du fichier SN :", err);
-});
-
-outputML.on("finish", () => {
-  console.log("Compression du fichier ML terminée.");
-});
-
-outputML.on("error", (err) => {
-  console.error("Erreur lors de la compression du fichier ML :", err);
+  output.on("finish", () => {
+    console.log(`Compression du fichier ${file.name} terminée.`);
+  });
 });
