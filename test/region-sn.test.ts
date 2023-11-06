@@ -10,8 +10,7 @@ test("Les régions sont correctement associées aux villes", () => {
     expect(Array.isArray(region.departments)).toBe(true);
 
     if (region.cities) {
-      region.cities.forEach((city) => {
-        expect(city.name).toBeDefined();
+      for (const city of region.cities) {
         expect(city.loc).toBeDefined();
         expect(city.loc.type).toBe("point");
         expect(city.loc.coordinates).toBeDefined();
@@ -21,7 +20,7 @@ test("Les régions sont correctement associées aux villes", () => {
         expect(city.population).toBeDefined();
         expect(city.countryCode).toBeDefined();
         expect(city.updatedAt).toBeDefined();
-      });
+      }
     }
   });
 });

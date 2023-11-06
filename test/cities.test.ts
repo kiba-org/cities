@@ -10,7 +10,7 @@ test("Le tableau de villes ne doit pas être vide", () => {
 });
 
 test("Les villes ont les propriétés requises", () => {
-  snData.forEach((city) => {
+  for (const city of snData) {
     expect(city.name).toBeDefined();
     expect(city.loc).toBeDefined();
     expect(city.loc.type).toBe("Point");
@@ -21,5 +21,5 @@ test("Les villes ont les propriétés requises", () => {
     expect(city.population).toBeDefined();
     expect(city.countryCode).toBeDefined();
     expect(city.updatedAt).toBeDefined();
-  });
+  }
 });

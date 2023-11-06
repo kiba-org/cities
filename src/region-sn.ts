@@ -1,16 +1,18 @@
 import * as fs from "fs";
 import path from "path";
+import zlib from "zlib";
 
 import { snData } from "./sn.js";
 import { City } from "./utils.js";
+import { getListofDepartmentSN } from "./data-utils.js";
 
 const currentFilePath = new URL(import.meta.url).pathname;
 const currentDir = path.dirname(currentFilePath);
-const rgFilePath = path.join(currentDir, "../dist/regions.txt");
+const rgGzFilePath = path.join(currentDir, "../dist/regions.txt.gz");
 
-const regionSn: string = fs.readFileSync(rgFilePath, "utf8");
-const regionSnLines: string[] = regionSn.split("\n");
-
+const regionsGzData: Buffer = fs.readFileSync(rgGzFilePath);
+const regionsData: string = zlib.gunzipSync(regionsGzData).toString("utf8");
+const rgLines: string[] = regionsData.split("\n");
 interface Region {
   name: string;
   departments: string[];
@@ -21,7 +23,7 @@ const regionSnCities = (): Region[] => {
   const regions: Region[] = [];
   let currentRegion: Region | null = null;
 
-  for (const line of regionSnLines) {
+  for (const line of rgLines) {
     if (line.trim() === "") {
       // Ignorer les lignes vides
       continue;
@@ -48,10 +50,9 @@ const regionSnCities = (): Region[] => {
 
   return regions;
 };
-const getregions = regionSnCities();
-const regions = getregions.map((region) => {
-  const datacities = snData.find((city) => region.name.includes(city.name));
+const regionSn = regionSnCities();
+const regions = regionSn.map((region) => {
+  const datacities = snData.find((city) => region.name === city.name);
   return { ...region, ...datacities };
 });
-
-export { regions, snData };
+export { regions, snData, getListofDepartmentSN };

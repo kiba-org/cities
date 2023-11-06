@@ -14,7 +14,7 @@ export interface City {
 export function processCityData(lines: string[]): City[] {
   const cities: City[] = [];
 
-  lines.forEach((line: string) => {
+  for (const line of lines) {
     const columns: string[] = line.split("\t");
 
     if (columns.length) {
@@ -42,7 +42,6 @@ export function processCityData(lines: string[]): City[] {
         });
       }
     }
-  });
-
+  }
   return cities;
 }
