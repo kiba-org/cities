@@ -11,7 +11,7 @@ const citiesGzData: Buffer = fs.readFileSync(citiesGzFilePath);
 const citiesData: string = zlib.gunzipSync(citiesGzData).toString("utf8");
 
 const citiesLines: string[] = citiesData.split("\n");
-const citiesSet: Set<string> = new Set(); // Ensemble pour stocker les noms des villes déjà ajoutées
+const citiesSet: Set<string> = new Set();
 
 const allCities: City[] = processCityData(citiesLines);
 
