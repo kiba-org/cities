@@ -54,4 +54,4 @@ const regions = getregions.map((region) => {
   return { ...region, ...datacities };
 });
 
-export { regions };
+export { regions, snData };

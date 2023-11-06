@@ -1,16 +1,16 @@
 import { test, expect } from "vitest";
-import { cities } from "../src/cities.js";
+import { snData } from "../src/sn.js";
 
 test("Le tableau de villes est défini", () => {
-  expect(cities).toBeDefined();
+  expect(snData).toBeDefined();
 });
 
 test("Le tableau de villes ne doit pas être vide", () => {
-  expect(cities.length).toBeGreaterThan(0);
+  expect(snData.length).toBeGreaterThan(0);
 });
 
 test("Les villes ont les propriétés requises", () => {
-  cities.forEach((city) => {
+  snData.forEach((city) => {
     expect(city.name).toBeDefined();
     expect(city.loc).toBeDefined();
     expect(city.loc.type).toBe("Point");
