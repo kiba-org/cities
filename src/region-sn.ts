@@ -1,7 +1,8 @@
 import * as fs from "fs";
 import path from "path";
 
-import { City, cities } from "./cities.js";
+import { snData } from "./sn.js";
+import { City } from "./utils.js";
 
 const currentFilePath = new URL(import.meta.url).pathname;
 const currentDir = path.dirname(currentFilePath);
@@ -49,7 +50,7 @@ const regionSnCities = (): Region[] => {
 };
 const getregions = regionSnCities();
 const regions = getregions.map((region) => {
-  const datacities = cities.find((city) => region.name.includes(city.name));
+  const datacities = snData.find((city) => region.name.includes(city.name));
   return { ...region, ...datacities };
 });
 

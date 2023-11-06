@@ -20,7 +20,7 @@ test("Les régions sont correctement associées aux villes", () => {
         expect(typeof city.loc.coordinates[1]).toBe("number");
         expect(city.population).toBeDefined();
         expect(city.countryCode).toBeDefined();
-        expect(city.date).toBeDefined();
+        expect(city.updatedAt).toBeDefined();
       });
     }
   });

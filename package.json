@@ -1,14 +1,15 @@
 {
   "name": "@kiba-org/cities",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Data  Sénégal 🇸🇳 et Mali 🇲🇱",
   "main": "./dist/index.js",
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
-    "./index.js": "./dist/index.js",
-    "./all": "./dist/cities.js",
-    "./region-sn": "./dist/region-sn.js"
+    "./all-country": "./dist/cities.js",
+    "./region-sn": "./dist/region-sn.js",
+    "./sn": "./dist/sn.js",
+    "./ml": "./dist/ml.js"
   },
   "files": [
     "./dist/*.js",
@@ -23,7 +24,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "npm run clean && tsc --project tsconfig.build.json && node compress.cjs && node copy-files.cjs",
+    "build": "npm run clean && tsc --project tsconfig.build.json && node ./scripts/manage-files.mjs",
     "prepublish": "npm run build",
     "prestart": "npm run build",
     "test": "vitest --run",

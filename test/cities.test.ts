@@ -20,6 +20,6 @@ test("Les villes ont les propriétés requises", () => {
     expect(typeof city.loc.coordinates[1]).toBe("number");
     expect(city.population).toBeDefined();
     expect(city.countryCode).toBeDefined();
-    expect(city.date).toBeDefined();
+    expect(city.updatedAt).toBeDefined();
   });
 });

@@ -4,5 +4,6 @@
 node_modules
 
 /dist
-/src/ML.txt.gz
-/src/SN.txt.gz
+/data/ML.txt.gz
+/data/SN.txt.gz
+/data/cities500.txt.gz
