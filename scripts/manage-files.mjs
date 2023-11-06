@@ -10,17 +10,18 @@ const currentDir = path.dirname(currentFilePath);
  * Compress files
  */
 
-const inputCitiesFilePath = path.join(currentDir, "../data/cities500.txt");
-const outputCitiesFilePath = path.join(currentDir, "../data/cities500.txt.gz");
+// TODO: add for all country > 500
+//const inputCitiesFilePath = path.join(currentDir, "../data/cities500.txt");
+//const outputCitiesFilePath = path.join(currentDir, "../data/cities500.txt.gz");
 
 const inputSNFilePath = path.join(currentDir, "../data/SN.txt");
 const outputSNFilePath = path.join(currentDir, "../data/SN.txt.gz");
 
 const inputMLFilePath = path.join(currentDir, "../data/ML.txt");
 const outputMLFilePath = path.join(currentDir, "../data/ML.txt.gz");
-
-const inputCities = createReadStream(inputCitiesFilePath);
-const outputCities = createWriteStream(outputCitiesFilePath);
+// TODO: add for all country > 500
+//const inputCities = createReadStream(inputCitiesFilePath);
+//const outputCities = createWriteStream(outputCitiesFilePath);
 
 const inputSN = createReadStream(inputSNFilePath);
 const outputSN = createWriteStream(outputSNFilePath);
@@ -28,9 +29,10 @@ const outputSN = createWriteStream(outputSNFilePath);
 const inputML = createReadStream(inputMLFilePath);
 const outputML = createWriteStream(outputMLFilePath);
 
-const gzipCities = createGzip({
-  level: constants.Z_MAX_LEVEL,
-});
+// TODO: add for all country > 500
+// const gzipCities = createGzip({
+//   level: constants.Z_MAX_LEVEL,
+// });
 const gzipSN = createGzip({
   level: constants.Z_MAX_LEVEL,
 });
@@ -38,17 +40,19 @@ const gzipML = createGzip({
   level: constants.Z_MAX_LEVEL,
 });
 
-inputCities.pipe(gzipCities).pipe(outputCities);
+// TODO: add for all country > 500
+//inputCities.pipe(gzipCities).pipe(outputCities);
 inputSN.pipe(gzipSN).pipe(outputSN);
 inputML.pipe(gzipML).pipe(outputML);
 
-outputCities.on("finish", () => {
-  console.log("Compression du fichier Cities500 terminée.");
-});
-
-outputCities.on("error", (err) => {
-  console.error("Erreur lors de la compression du fichier Cities500 :", err);
-});
+// TODO: add for all country > 500
+// outputCities.on("finish", () => {
+//   console.log("Compression du fichier Cities500 terminée.");
+// });
+// TODO: add for all country > 500
+// outputCities.on("error", (err) => {
+//   console.error("Erreur lors de la compression du fichier Cities500 :", err);
+// });
 
 outputSN.on("finish", () => {
   console.log("Compression du fichier SN terminée.");

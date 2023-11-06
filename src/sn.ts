@@ -2,6 +2,7 @@ import * as fs from "fs";
 import path from "path";
 import zlib from "zlib";
 import { City, processCityData } from "./utils.js";
+import { regions } from "./region-sn.js";
 
 const currentFilePath = new URL(import.meta.url).pathname;
 const currentDir = path.dirname(currentFilePath);
@@ -23,4 +24,4 @@ const snData = cities.filter((city) => {
   return false;
 });
 
-export { snData };
+export { snData, regions };
