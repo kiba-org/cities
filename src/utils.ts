@@ -3,7 +3,7 @@ export interface City {
   asciiname: string; // name of geographical point in plain ascii characters, varchar(200)
   loc: {
     type: string;
-    coordinates: [number, number];
+    coordinates: { lat: number; lng: number };
   };
   population: number;
   countryCode: string;
@@ -33,7 +33,7 @@ export function processCityData(lines: string[]): City[] {
           asciiname,
           loc: {
             type: "Point",
-            coordinates: [longitude, latitude],
+            coordinates: { lat: latitude, lng: longitude },
           },
           population,
           countryCode,

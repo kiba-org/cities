@@ -25,7 +25,7 @@ const data = [
     outputPath: "../dist/regions.txt.gz",
   },
   {
-    allow: false,
+    allow: true,
     name: "cities",
     inputPath: "../data/cities500.txt",
     outputPath: "../dist/cities500.txt.gz",

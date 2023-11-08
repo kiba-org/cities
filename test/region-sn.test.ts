@@ -14,9 +14,9 @@ test("Les régions sont correctement associées aux villes", () => {
         expect(city.loc).toBeDefined();
         expect(city.loc.type).toBe("point");
         expect(city.loc.coordinates).toBeDefined();
-        expect(city.loc.coordinates.length).toBe(2);
-        expect(typeof city.loc.coordinates[0]).toBe("number");
-        expect(typeof city.loc.coordinates[1]).toBe("number");
+        expect(city.loc.coordinates).toBeDefined();
+        expect(typeof city.loc.coordinates.lat).toBe("number");
+        expect(typeof city.loc.coordinates.lat).toBe("number");
         expect(city.population).toBeDefined();
         expect(city.countryCode).toBeDefined();
         expect(city.updatedAt).toBeDefined();

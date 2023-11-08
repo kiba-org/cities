@@ -4,7 +4,6 @@ import zlib from "zlib";
 
 import { snData } from "./sn.js";
 import { City } from "./utils.js";
-import { getListofDepartmentSN } from "./data-utils.js";
 
 const currentFilePath = new URL(import.meta.url).pathname;
 const currentDir = path.dirname(currentFilePath);
@@ -55,4 +54,4 @@ const regions = regionSn.map((region) => {
   const datacities = snData.find((city) => region.name === city.name);
   return { ...region, ...datacities };
 });
-export { regions, snData, getListofDepartmentSN };
+export { regions };
