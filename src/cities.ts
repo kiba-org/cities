@@ -24,5 +24,5 @@ const cities: City[] = allCities
     return false;
   })
   .sort((a, b) => a.name.localeCompare(b.name));
-
-export { cities };
+const allCountries = cities;
+export { allCountries };

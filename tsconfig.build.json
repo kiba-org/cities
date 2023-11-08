@@ -4,6 +4,5 @@
     "noEmit": false,
   },
   "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts", "src/cities.ts"]
-  // TODO: remove cities.ts to allow all country
+  "exclude": ["**/*.test.ts"]
 }
