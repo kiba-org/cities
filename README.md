@@ -24,13 +24,6 @@ const cityData = KibaCities.getCityByName('Dakar');
 console.log(cityData);
 ```
 
-### Departments in Senegal
-
-```javascript
-const senegalDepartments = KibaCities.sn.getListOfDepartments();
-console.log(senegalDepartments);
-```
-
 ### Getting City Coordinates
 
 ```javascript
@@ -47,6 +40,13 @@ You can access the full list of cities in Senegal using:
 ```javascript
 const senegalCityList = KibaCities.sn.getLists();
 console.log(senegalCityList);
+```
+
+### Departments in Senegal
+
+```javascript
+const senegalDepartments = KibaCities.sn.getListOfDepartments();
+console.log(senegalDepartments);
 ```
 
 ### Mali Cities
