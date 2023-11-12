@@ -10,6 +10,13 @@ Hey there! Welcome to KibaCities – your go-to place for city data in 🌍✨
 
 ## Usage
 
+### Getting all Country
+
+```javascript
+const senegalCities = KibaCities.getAllCountry();
+console.log(senegalCities);
+```
+
 ### Getting Cities by Country Code
 
 ```javascript

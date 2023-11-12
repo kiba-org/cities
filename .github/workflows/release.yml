@@ -1,5 +1,18 @@
 name: release
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      [
+        "+([0-9])?(.{+([0-9]),x}).x",
+        "main",
+        "next",
+        "next-major",
+        "beta",
+        "alpha",
+        "!all-contributors/**",
+      ]
+  pull_request:
+    branches-ignore: ["all-contributors/**"]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -29,8 +42,7 @@ jobs:
     name: 🚀 Release
     needs: [test]
     runs-on: ubuntu-latest
-    if:
-      ${{ github.repository == 'kiba-org/cities' &&
+    if: ${{ github.repository == 'kiba-org/cities' &&
       contains('refs/heads/main,refs/heads/beta,refs/heads/next,refs/heads/alpha',
       github.ref) && github.event_name == 'push' }}
     steps:
@@ -48,8 +60,7 @@ jobs:
           useLockFile: false
 
       - name: 💪 Generate Types
-        run:
-          npx -p typescript tsc --declaration --noEmit --allowJs --checkJs
+        run: npx -p typescript tsc --declaration --noEmit --allowJs --checkJs
           --downlevelIteration --module nodenext --moduleResolution nodenext --target
           ES2020 --outDir ./dist
 

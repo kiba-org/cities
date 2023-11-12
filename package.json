@@ -1,15 +1,12 @@
 {
   "name": "@kiba-org/cities",
   "version": "1.0.1",
-  "description": "KibaCities is a library providing city data including geographic coordinates, country codes, and department information. It allows users to easily fetch city details, search by name, and obtain department lists for specific countries such as 🇸🇳  Senegal and 🇲🇱 Mali.",
+  "description": "KibaCities is a library providing city data including geographic coordinates, country codes, and department information. It allows users to easily fetch city details, search by name, and obtain department lists for specific countries such as 🇸🇳 Senegal and 🇲🇱 Mali.",
   "main": "./dist/index.js",
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
-    "./index.js": "./dist/index.js",
-    "./allcountry": "./dist/cities.js",
-    "./sn": "./dist/sn.js",
-    "./ml": "./dist/ml.js"
+    "./index.js": "./dist/index.js"
   },
   "files": [
     "./dist/*.js",
