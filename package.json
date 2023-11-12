@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/kiba-org/cities#readme",
   "author": "Hakim Gueye <beatsjordy@gmail.com>",
-  "license": "SEE LICENSE IN ./LICENSE",
+  "license": "./LICENSE",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
     "@types/node": "^20.8.10",
